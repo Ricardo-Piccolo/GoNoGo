@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Go/No-Go</title>
+        <script src="jsPsych/jspsych.js"></script>
+        <script src="jsPsych/plugins/jspsych-html-keyboard-response.js"></script>
+        <script src="jsPsych/plugins/jspsych-image-keyboard-response.js"></script>
+        <script src="jsPsych/plugins/jspsych-instructions.js"></script>
+        <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe"></script>
+        <link href="jsPsych/css/jspsych.css" rel="stylesheet">
+    </head>
+    <body></body>
+    <script>
+
+        var timeline = [];
+
+        
+        const subject_id = jsPsych.randomization.randomID(10);
+              const filename = `${subject_id}.csv`;
+            
+
+        var instructions = {
+            type: 'instructions',
+            pages: ['<p>Bem-vindo(a) a esse experimento!</p><p>Imagens de coelhos e de cenouras aparecerão na tela.</p><p>Um ponto de fixação (+) aparecerá no meio da tela entre cada imagem.</p><p>Aperte a tecla ESPAÇO no teclado o mais rápido que puder apenas quando o coelho aparecer.</p><p>Se a cenoura aparecer, não pressione nenhuma tecla.</p><p>Você fará um teste agora para se familiarizar com a tarefa.</p><p>Aperte o ESPAÇO para dar início ao teste.</p>'],
+            key_forward: ' ',
+        };
+        timeline.push(instructions);
+
+        var test1 = {
+        type: 'image-keyboard-response',
+        choices: ' ',
+        stimulus: jsPsych.timelineVariable('stimulus'),
+        response_ends_trial: false,
+        trial_duration: 1300,
+        };
+
+        var fixation = {
+        type: 'html-keyboard-response',
+        stimulus: '<div style="font-size:60px;">+</div>',
+        choices: "NO_KEYS",
+        trial_duration: 500,
+        };
+
+        var test1_trials = { 
+        timeline: [fixation, test1],
+        timeline_variables: [
+                {stimulus: 'cenoura.png'},
+		        {stimulus: 'cenoura.png'},
+		        {stimulus: 'coelho.png'},
+		        {stimulus: 'coelho.png'},
+		        {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+        ],
+        randomize_order: true
+        };
+        timeline.push(test1_trials);
+
+        var instructions2 = {
+            type: 'instructions',
+            pages: ['<p>Agora que você está familiarizado(a) com a tarefa, vamos prosseguir</p><p>para o experimento real.</p><p>Aperte o ESPAÇO para começá-lo.</p>'],
+            key_forward: ' ',
+        };
+        timeline.push(instructions2);
+
+        var fixation = {
+        type: 'html-keyboard-response',
+        stimulus: '<div style="font-size:60px;">+</div>',
+        choices: "NO_KEYS",
+        trial_duration: 500,
+        };
+
+        var real_experiment = {
+        type: 'image-keyboard-response',
+        choices: ' ',
+        stimulus: jsPsych.timelineVariable('stimulus'),
+        response_ends_trial: false,
+        trial_duration: 1300,
+        };
+
+        var  real_experiment_trials = { 
+        timeline: [fixation, real_experiment],
+        timeline_variables: [
+                {stimulus: 'coelho.png'},
+		        {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+
+                {stimulus: 'cenoura.png'},
+
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+        ],
+        randomize_order: true
+        };
+        timeline.push(real_experiment_trials);
+
+        var instructions3 = {
+            type: 'instructions',
+            pages: ['BLOCO 2'],
+            show_clickable_nav: true
+        };
+        timeline.push(instructions3);
+
+        var fixation = {
+        type: 'html-keyboard-response',
+        stimulus: '<div style="font-size:60px;">+</div>',
+        choices: "NO_KEYS",
+        trial_duration: 500,
+        };
+
+        var real_experiment2 = {
+        type: 'image-keyboard-response',
+        choices: ' ',
+        stimulus: jsPsych.timelineVariable('stimulus'),
+        response_ends_trial: false,
+        trial_duration: 1300,
+        };
+
+        var  real_experiment2_trials = { 
+        timeline: [fixation, real_experiment2],
+        timeline_variables: [
+                {stimulus: 'coelho.png'},
+		        {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+                {stimulus: 'coelho.png'},
+
+                {stimulus: 'cenoura.png'},
+
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+                {stimulus: 'cenoura.png'},
+        ],
+        randomize_order: true
+        };
+        timeline.push(real_experiment2_trials);
+
+        
+        const save_data = {
+                type: jsPsychPipe,
+                action: "save",
+                experiment_id: "XBymiNd0HMQd",
+                filename: filename,
+                data_string: ()=>jsPsych.data.get().csv()
+              };
+
+        
+        jsPsych.init({
+            timeline: timeline,
+            on_finish: function() {
+                jsPsych.data.displayData();
+            }
+        });
+    </script>
+</html>
